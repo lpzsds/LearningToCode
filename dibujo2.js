@@ -3,10 +3,33 @@ var p = document.getElementById("papel");
 var areadedibujo = p.getContext("2d");
 var color;
 
+//Definimos todas las funciones
 
 
+//- Funcion que hace una linea - draw a line
+function linea(color, x0, y0, xf, yf)
+{
+//Obtener pendiente de la recta
+  var m = (yf-y0)/(xf-x0);
+//interseccion con el eje y
+  var b = y0 - m*x0;
+  var longitud_linea = Math.sqrt( (xf-x0)*(xf-x0) + (yf-y0)*(yf-y0)  );
+  var posx = x0
+  var posy = y0
+  var longitudrecorrida = 0;
+  var aumento_por_ciclo = 5
 
-circulo("blue", 100, 100, 10)
+        while (longitudrecorrida<longitud_linea)
+
+        {
+          console.log(posx);
+          posy = m * posx + b
+          circulo("blue", posx, posy, 10)
+          posx = posx + aumento_por_ciclo
+          longitudrecorrida = longitudrecorrida + aumento_por_ciclo
+        }
+
+}
 
 function circulo(color, x, y, rGrados)
 //Funcion que dibuja un circulo - function that draw a circle
@@ -25,19 +48,7 @@ function circulo(color, x, y, rGrados)
   areadedibujo.closePath();
 }
 
-linea("blue", 0, 1, 3, 1)
-//Funcion que hace una linea - draw a line
-function linea(color, x0, y0, xf, yf)
-{
-//Obtener pendiente de la recta
-  var m = (yf-y0)/(xf-x0);
-//interseccion con el eje y
-  var b = y0 - m*x0;
-  var longitud_linea = Math.sqrt( (xf-x0)*(xf-x0) + (yf-y0)*(yf-y0)  );
-  var distancia_entrecirculos
 
-  for (var distancia_entrecirculos = 0; distancia_entrecirculos < array.length; i++) {
-    array[i]
-  }
 
-}
+linea("blue", 0, 20, 300, 20)
+console.log("fin")
